@@ -19,7 +19,8 @@ mode = (usetexmacs) -> (
     if texmacsmode != usetexmacs then (
         texmacsmode = usetexmacs;
         if texmacsmode then (
-            Thing#{Standard,Print} = sentinelTeXmacsPrint
+            Thing#{Standard,Print} = x -> (<< "--VAL\n" << html x << "\n--CLS\n";)
+            --Thing#{Standard,Print} = sentinelTeXmacsPrint
             --Thing#{Standard,AfterPrint} = sentinelTeXmacsAfterPrint
         ) else (
             Thing#{Standard,Print} = sentinelStandardPrint

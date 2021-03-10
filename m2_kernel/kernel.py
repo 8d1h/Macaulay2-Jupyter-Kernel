@@ -259,9 +259,8 @@ class M2Kernel(Kernel):
         if mode == 'texmacs':
             value_lines = nodes[-1][2]
             if value_lines:
-                dirty = '\n'.join([ln.decode() for ln in value_lines])
-                clean = dirty[6:] + '\n</math>'
-                return {'text/html': clean}, stdout
+                html = '\n'.join([ln.decode() for ln in value_lines])
+                return {'text/html': html}, stdout
         elif mode == 'pretty':
             margin = len(str(nodes[-1][0]))+4
             textval = '\n'.join([ln[margin:].decode() for ln in nodes[-1][2]])
